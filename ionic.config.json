@@ -1,0 +1,7 @@
+{
+  "name": "technoloplus",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
