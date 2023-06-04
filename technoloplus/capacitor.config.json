@@ -1,0 +1,11 @@
+{
+  "appId": "co.wappinesslab.technoloplus",
+  "appName": "technoloplus",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

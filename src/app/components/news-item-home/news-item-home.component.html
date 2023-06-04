@@ -1,0 +1,16 @@
+<p>News Item Home WOrks</p>
+
+<ion-card class="ion-no-margin box-shadow border-radius" (click)="openSinglePost(data)">
+  <ion-card-header class="ion-no-padding">
+    <ion-img [src]="data.image" alt=""></ion-img>
+    <span class="border-radius category ion-text-uppercase">{{data.category}}</span>
+  </ion-card-header>
+  <ion-card-content>
+      <h4 class="ion-text-wrap text-size-xs text-color-primary" [innerHTML]="textToHtml(data.title)"></h4>
+      <!-- Time -->
+      <div class="time">
+        <ion-icon class="icon-small" name="time"></ion-icon>
+        <p class="text-size-p text-color-primary">{{data.time | date:'d MMMM yyyy'}}</p>
+      </div>
+  </ion-card-content>
+</ion-card>

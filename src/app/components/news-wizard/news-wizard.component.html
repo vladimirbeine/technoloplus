@@ -1,0 +1,19 @@
+<!--  Theme Form - Form + Write Comment -->
+<ion-content class="transparent">
+  {{item.title}}
+  <!--Button section-->
+  <div *ngIf="data != null">
+    <ion-button size="large" fill="clear" class="ion-text-capitalize ion-float-start"
+    (click)="onPreviousFunc()" *ngIf="prev">
+      {{data.btnPrev}}
+    </ion-button>
+    <ion-button size="large" fill="clear" class="ion-text-capitalize ion-float-end"
+    (click)="onNextFunc()" *ngIf="next">
+      {{data.btnNext}}
+    </ion-button>
+    <ion-button size="large" fill="clear" class="ion-text-capitalize ion-float-end"
+    (click)="onFinishFunc()" *ngIf="!next">
+      {{data.btnFinish}}
+    </ion-button>
+  </div>
+</ion-content>

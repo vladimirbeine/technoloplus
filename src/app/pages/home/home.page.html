@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Technolo Plus</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+  <!-- Segment Btton Home Page -->
+  <ion-segment scrollable [(ngModel)]="selectedItem">
+    <ion-segment-button class="ion-text-capitalize" [value]="item.name" *ngFor="let item of categories"
+      (click)="refreshData(item)">
+      {{item.name}} {{ item.id }}
+    </ion-segment-button>
+  </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-grid *ngIf="!isEmptyStateActive()">
+    <!-- Featured News -->
+    <ion-row class="ion-align-items-center" *ngIf="posts.length">
+      <ion-col>
+        <h1 class="ion-padding-start text-size-lg text-color-primary ion-no-margin">Featured News</h1>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-button size="small" fill="clear" class="button-title" (click)="openViewAll(true, $event)">View All
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <!-- Name Category -->
+    <ion-row class="ion-align-items-center"  *ngIf="postsRecentNews.length">
+      <ion-col class="ion-no-padding">
+        <h1 class="ion-padding-start text-size-lg text-color-primary ion-no-margin">
+          {{selectedCategory ? selectedCategory.name:""}}</h1>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-button size="small" fill="clear" class="button-title" (click)="openViewAll(false, $event)">View All
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- List Category Posts -->
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let item of postsRecentNews">
+        <app-news-item-home [data]="item"></app-news-item-home>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <app-news-empty-state
+    *ngIf="isEmptyStateActive()"
+    [title]="emptyState.title"
+    [subtitle]="emptyState.subtitle">
+  </app-news-empty-state>
+
+  <news-loading  *ngIf="initialLoading()"></news-loading>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  
+</ion-content>
